@@ -1,0 +1,41 @@
+<Solution>
+  <Folder Name="/building-blocks/" />
+  <Folder Name="/building-blocks/Caching/" />
+  <Folder Name="/building-blocks/Messaging/" />
+  <Folder Name="/building-blocks/Security/" />
+  <Folder Name="/building-blocks/SharedKernel/">
+    <Project Path="building-blocks/SharedKernel/SharedKernel/SharedKernel.csproj" />
+  </Folder>
+  <Folder Name="/docker/">
+    <File Path="docker-compose.yml" />
+  </Folder>
+  <Folder Name="/gateway/" />
+  <Folder Name="/gateway/Aggregator/">
+    <Project Path="AssetManagment.Aggregator/AssetManagment.Aggregator.csproj" Id="f7cb8b4c-688a-4de2-9e04-3912f407fcce" />
+  </Folder>
+  <Folder Name="/gateway/ocelot/">
+    <Project Path="AssetManagment.Gateway/AssetManagment.Gateway.csproj" Id="4af04d90-e053-4755-9c0a-ccb7010174c4" />
+  </Folder>
+  <Folder Name="/services/" />
+  <Folder Name="/services/sharing/" />
+  <Folder Name="/services/sharing/src/">
+    <Project Path="services/sharing/src/Sharing.API/Sharing.API.csproj" Id="be95b32d-ce2e-4086-b270-db7219512553" />
+    <Project Path="services/sharing/src/Sharing.Application/Sharing.Application.csproj" Id="f7ca656c-7dc2-43dc-b428-c0b9ac7c841b" />
+    <Project Path="services/sharing/src/Sharing.Domain/Sharing.Domain.csproj" Id="ac5f3f2b-94ea-4a65-8a5d-85cf628c4681" />
+    <Project Path="services/sharing/src/Sharing.Infrastructure/Sharing.Infrastructure.csproj" Id="c470bde8-dff8-4f56-95fd-c4752cdd6fb4" />
+  </Folder>
+  <Folder Name="/services/storage/" />
+  <Folder Name="/services/storage/src/">
+    <Project Path="services/storage/src/Storage.API/Storage.API.csproj" />
+    <Project Path="services/storage/src/Storage.Application/Storage.Application.csproj" />
+    <Project Path="services/storage/src/Storage.Domain/Storage.Domain.csproj" />
+    <Project Path="services/storage/src/Storage.Infrastructure/Storage.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/services/user/" />
+  <Folder Name="/services/user/src/">
+    <Project Path="services/user/UserService/src/UserService.Api/UserService.Api.csproj" />
+    <Project Path="services/user/UserService/src/UserService.Application/UserService.Application.csproj" />
+    <Project Path="services/user/UserService/src/UserService.Domain/UserService.Domain.csproj" />
+    <Project Path="services/user/UserService/src/UserService.Infrastructure/UserService.Infrastructure.csproj" />
+  </Folder>
+</Solution>

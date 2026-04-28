@@ -1,0 +1,95 @@
+@import "tailwindcss";
+
+:root {
+  --background: #09090b; 
+  --foreground: #f4f4f5; 
+  --container: #18181B;
+  --text-color: #e4e4e7;
+  --placeholder-color: #52525b;
+  --small-text-color: #d4d4d8;
+  --header-text-color: #f4f4f5;
+  --table-text-color: #a1a1aa;
+  --icon-color: #a1a1aa;
+}
+
+html.light {
+  --background: #fafafa;
+  --foreground: #18181b;
+  --container: #F4F4F5;
+  --text-color : #27272a;
+  --placeholder-color: #a1a1aa;
+  --small-text-color: #3f3f46;
+  --header-text-color: #18181b;
+  --table-text-color: #fafafa;
+  --icon-color: #52525b;
+}
+
+html.dark {
+  --background: #09090b;
+  --foreground: #f4f4f5;
+  --container: #18181B;
+  --text-color: #e4e4e7;
+  --placeholder-color: #52525b;
+  --small-text-color: #d4d4d8;
+  --header-text-color: #f4f4f5;
+  --table-text-color: #a1a1aa;
+  --icon-color: #a1a1aa;
+}
+
+@media (prefers-color-scheme: light) {
+  html.system {
+  --background: #fafafa;
+  --foreground: #18181b;
+  --container: #F4F4F5;
+  --text-color : #27272a;
+  --placeholder-color: #a1a1aa;
+  --small-text-color: #3f3f46;
+  --header-text-color: #18181b;
+  --table-text-color: #fafafa;
+  --icon-color: #52525b;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  html.system {
+    --background: #09090b;
+    --foreground: #f4f4f5;
+    --container: #18181B;
+    --text-color: #e4e4e7;
+    --placeholder-color: #52525b;
+    --small-text-color: #d4d4d8;
+    --header-text-color: #f4f4f5;
+    --table-text-color: #a1a1aa;
+    --icon-color: #a1a1aa;
+  }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-container: var(--container);
+  --color-text-color: var(--text-color);
+  --color-placeholder-color: var(--placeholder-color);
+  --color-small-text-color: var(--small-text-color);
+  --color-header-text-color: var(--header-text-color);
+  --color-table-text-color: var(--table-text-color);
+  --color-icon-color: var(--icon-color);
+  
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}

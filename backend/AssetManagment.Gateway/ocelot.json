@@ -1,0 +1,92 @@
+{
+  "Routes": [
+
+    {
+      "UpstreamPathTemplate": "/api/user/{everything}",
+      "DownstreamPathTemplate": "/api/user/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7119
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/api/auth/{everything}",
+      "DownstreamPathTemplate": "/api/auth/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7119
+        }
+      ]
+    },
+
+    {
+      "UpstreamPathTemplate": "/api/files/{everything}",
+      "DownstreamPathTemplate": "/api/files/{everything}",
+      "DownstreamScheme": "https",
+      "RequestSizeLimit": 104857600,
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7024
+        }
+      ]
+    },
+
+    {
+      "UpstreamPathTemplate": "/api/folder/{everything}",
+      "DownstreamPathTemplate": "/api/folder/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7024
+        }
+      ]
+    },
+
+    {
+      "UpstreamPathTemplate": "/api/shares/{everything}",
+      "DownstreamPathTemplate": "/api/shares/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7165
+        }
+      ]
+    },
+
+    {
+      "UpstreamPathTemplate": "/api/asset-details/{everything}",
+      "DownstreamPathTemplate": "/api/assets/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7175
+        }
+      ]
+    },
+
+    {
+      "UpstreamPathTemplate": "/api/share-details/{everything}",
+      "DownstreamPathTemplate": "/api/shares/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7175
+        }
+      ]
+    }
+
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost:7187"
+  }
+}

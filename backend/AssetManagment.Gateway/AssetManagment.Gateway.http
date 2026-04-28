@@ -1,0 +1,6 @@
+@AssetManagment.Gateway_HostAddress = http://localhost:5139
+
+GET {{AssetManagment.Gateway_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

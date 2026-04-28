@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MediatR.Contracts</name>
+    </assembly>
+    <members>
+        <member name="T:MediatR.INotification">
+            <summary>
+            Marker interface to represent a notification
+            </summary>
+        </member>
+        <member name="T:MediatR.IRequest">
+            <summary>
+            Marker interface to represent a request with a void response
+            </summary>
+        </member>
+        <member name="T:MediatR.IRequest`1">
+            <summary>
+            Marker interface to represent a request with a response
+            </summary>
+            <typeparam name="TResponse">Response type</typeparam>
+        </member>
+        <member name="T:MediatR.IBaseRequest">
+            <summary>
+            Allows for generic type constraints of objects implementing IRequest or IRequest{TResponse}
+            </summary>
+        </member>
+        <member name="T:MediatR.IStreamRequest`1">
+            <summary>
+            Marker interface to represent a request with a streaming response
+            </summary>
+            <typeparam name="TResponse">Response type</typeparam>
+        </member>
+        <member name="T:MediatR.Unit">
+            <summary>
+            Represents a void type, since <see cref="T:System.Void"/> is not a valid return type in C#.
+            </summary>
+        </member>
+        <member name="P:MediatR.Unit.Value">
+            <summary>
+            Default and only value of the <see cref="T:MediatR.Unit"/> type.
+            </summary>
+        </member>
+        <member name="P:MediatR.Unit.Task">
+            <summary>
+            Task from a <see cref="T:MediatR.Unit"/> type.
+            </summary>
+        </member>
+        <member name="M:MediatR.Unit.CompareTo(MediatR.Unit)">
+            <summary>
+            Compares the current object with another object of the same type.
+            </summary>
+            <param name="other">An object to compare with this object.</param>
+            <returns>
+            A value that indicates the relative order of the objects being compared.
+            The return value has the following meanings:
+             - Less than zero: This object is less than the <paramref name="other" /> parameter.
+             - Zero: This object is equal to <paramref name="other" />.
+             - Greater than zero: This object is greater than <paramref name="other" />.
+            </returns>
+        </member>
+        <member name="M:MediatR.Unit.System#IComparable#CompareTo(System.Object)">
+            <summary>
+            Compares the current instance with another object of the same type and returns an integer that indicates whether the current instance precedes, follows, or occurs in the same position in the sort order as the other object.
+            </summary>
+            <param name="obj">An object to compare with this instance.</param>
+            <returns>
+            A value that indicates the relative order of the objects being compared.
+            The return value has these meanings:
+             - Less than zero: This instance precedes <paramref name="obj" /> in the sort order.
+             - Zero: This instance occurs in the same position in the sort order as <paramref name="obj" />.
+             - Greater than zero: This instance follows <paramref name="obj" /> in the sort order.
+            </returns>
+        </member>
+        <member name="M:MediatR.Unit.GetHashCode">
+            <summary>
+            Returns a hash code for this instance.
+            </summary>
+            <returns>
+            A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
+            </returns>
+        </member>
+        <member name="M:MediatR.Unit.Equals(MediatR.Unit)">
+            <summary>
+            Determines whether the current object is equal to another object of the same type.
+            </summary>
+            <param name="other">An object to compare with this object.</param>
+            <returns>
+            <c>true</c> if the current object is equal to the <paramref name="other" /> parameter; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:MediatR.Unit.Equals(System.Object)">
+            <summary>
+            Determines whether the specified <see cref="T:System.Object" /> is equal to this instance.
+            </summary>
+            <param name="obj">The object to compare with the current instance.</param>
+            <returns>
+            <c>true</c> if the specified <see cref="T:System.Object" /> is equal to this instance; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:MediatR.Unit.op_Equality(MediatR.Unit,MediatR.Unit)">
+            <summary>
+            Determines whether the <paramref name="first"/> object is equal to the <paramref name="second"/> object.
+            </summary>
+            <param name="first">The first object.</param>
+            <param name="second">The second object.</param>
+            <c>true</c> if the <paramref name="first"/> object is equal to the <paramref name="second" /> object; otherwise, <c>false</c>.
+        </member>
+        <member name="M:MediatR.Unit.op_Inequality(MediatR.Unit,MediatR.Unit)">
+            <summary>
+            Determines whether the <paramref name="first"/> object is not equal to the <paramref name="second"/> object.
+            </summary>
+            <param name="first">The first object.</param>
+            <param name="second">The second object.</param>
+            <c>true</c> if the <paramref name="first"/> object is not equal to the <paramref name="second" /> object; otherwise, <c>false</c>.
+        </member>
+        <member name="M:MediatR.Unit.ToString">
+            <summary>
+            Returns a <see cref="T:System.String" /> that represents this instance.
+            </summary>
+            <returns>A <see cref="T:System.String" /> that represents this instance.</returns>
+        </member>
+    </members>
+</doc>

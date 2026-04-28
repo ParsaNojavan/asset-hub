@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>e6a06da8-46fd-4b3a-9d9f-9bcd37b7f283</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="12.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.11" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="6.1.3" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.23.0" />
+    <PackageReference Include="RabbitMQ.Client" Version="7.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Storage.Application\Storage.Application.csproj" />
+    <ProjectReference Include="..\Storage.Infrastructure\Storage.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="storage-data\16821880-30af-4c2f-ae3e-43096725fb8f\" />
+    <Folder Include="storage-data\2958804b-2818-4820-a66e-801f86ed079f\" />
+    <Folder Include="storage-data\33f1eb80-be81-4508-a062-372f00ce36fa\" />
+    <Folder Include="storage-data\5cd773b4-5def-4c86-ab4d-b00c0d80db4b\" />
+    <Folder Include="storage-data\968ed40a-95f0-4d11-a475-6b6a17f867d4\" />
+    <Folder Include="storage-data\profiles\" />
+  </ItemGroup>
+
+</Project>

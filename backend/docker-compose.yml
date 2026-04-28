@@ -1,0 +1,29 @@
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+
+  UserService:
+    build:
+      context: "."
+      dockerfile: "services/user/UserService/src/UserService.Api/Dockerfile"
+    image: user-api
+
+  SharingApi:
+    build:
+      context: "."
+      dockerfile: "services/sharing/src/Sharing.API/Dockerfile"
+    image: sharing-api
+
+  StorageApi:
+    build:
+      context: "."
+      dockerfile: "services/storage/src/Storage.API/Dockerfile"
+    image: storage-api
+    

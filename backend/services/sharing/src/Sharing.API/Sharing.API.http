@@ -1,0 +1,6 @@
+@Sharing.API_HostAddress = http://localhost:5249
+
+GET {{Sharing.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,712 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MediatR</name>
+    </assembly>
+    <members>
+        <member name="T:System.Runtime.CompilerServices.IsExternalInit">
+            <summary>
+                Reserved to be used by the compiler for tracking metadata.
+                This class should not be used by developers in source code.
+            </summary>
+            <remarks>
+                This definition is provided by the <i>IsExternalInit</i> NuGet package (https://www.nuget.org/packages/IsExternalInit).
+                Please see https://github.com/manuelroemer/IsExternalInit for more information.
+            </remarks>
+        </member>
+        <member name="T:MediatR.IMediator">
+            <summary>
+            Defines a mediator to encapsulate request/response and publishing interaction patterns
+            </summary>
+        </member>
+        <member name="T:MediatR.INotificationHandler`1">
+            <summary>
+            Defines a handler for a notification
+            </summary>
+            <typeparam name="TNotification">The type of notification being handled</typeparam>
+        </member>
+        <member name="M:MediatR.INotificationHandler`1.Handle(`0,System.Threading.CancellationToken)">
+            <summary>
+            Handles a notification
+            </summary>
+            <param name="notification">The notification</param>
+            <param name="cancellationToken">Cancellation token</param>
+        </member>
+        <member name="T:MediatR.NotificationHandler`1">
+            <summary>
+            Wrapper class for a synchronous notification handler
+            </summary>
+            <typeparam name="TNotification">The notification type</typeparam>
+        </member>
+        <member name="M:MediatR.NotificationHandler`1.Handle(`0)">
+            <summary>
+            Override in a derived class for the handler logic
+            </summary>
+            <param name="notification">Notification</param>
+        </member>
+        <member name="M:MediatR.Internal.ObjectDetails.CompareByAssembly(MediatR.Internal.ObjectDetails,MediatR.Internal.ObjectDetails)">
+            <summary>
+            Compare two objects according to current assembly
+            </summary>
+            <param name="x">First object to compare</param>
+            <param name="y">Second object to compare</param>
+            <returns>
+            An object has a higher priority if it belongs to the current assembly and the other is not;
+            If none of the objects belong to the current assembly, they can be considered equal;
+            If both objects belong to the current assembly, they can't be compared only by this criterion.
+            </returns>
+        </member>
+        <member name="M:MediatR.Internal.ObjectDetails.CompareByNamespace(MediatR.Internal.ObjectDetails,MediatR.Internal.ObjectDetails)">
+            <summary>
+            Compare two objects according to current namespace
+            </summary>
+            <param name="x">First object to compare</param>
+            <param name="y">Second object to compare</param>
+            <returns>
+            An object has a higher priority if it belongs to the current/child namespace and the other is not;
+            If both objects belong to the current/child namespace, they can be considered equal;
+            If none of the objects belong to the current/child namespace, they can't be compared by this criterion.
+            </returns>
+        </member>
+        <member name="M:MediatR.Internal.ObjectDetails.CompareByLocation(MediatR.Internal.ObjectDetails,MediatR.Internal.ObjectDetails)">
+            <summary>
+            Compare two objects according to location in the assembly
+            </summary>
+            <param name="x">First object to compare</param>
+            <param name="y">Second object to compare</param>
+            <returns>
+            An object has a higher priority if it location is part of the current location and the other is not;
+            If both objects are part of the current location, the closest has higher priority;
+            If none of the objects are part of the current location, they can be considered equal.
+            </returns>
+        </member>
+        <member name="T:MediatR.RequestHandlerDelegate`1">
+            <summary>
+            Represents an async continuation for the next task to execute in the pipeline
+            </summary>
+            <typeparam name="TResponse">Response type</typeparam>
+            <returns>Awaitable task returning a <typeparamref name="TResponse"/></returns>
+        </member>
+        <member name="T:MediatR.IPipelineBehavior`2">
+            <summary>
+            Pipeline behavior to surround the inner handler.
+            Implementations add additional behavior and await the next delegate.
+            </summary>
+            <typeparam name="TRequest">Request type</typeparam>
+            <typeparam name="TResponse">Response type</typeparam>
+        </member>
+        <member name="M:MediatR.IPipelineBehavior`2.Handle(`0,MediatR.RequestHandlerDelegate{`1},System.Threading.CancellationToken)">
+            <summary>
+            Pipeline handler. Perform any additional behavior and await the <paramref name="next"/> delegate as necessary
+            </summary>
+            <param name="request">Incoming request</param>
+            <param name="next">Awaitable delegate for the next action in the pipeline. Eventually this delegate represents the handler.</param>
+            <param name="cancellationToken">Cancellation token</param>
+            <returns>Awaitable task returning the <typeparamref name="TResponse"/></returns>
+        </member>
+        <member name="T:MediatR.IPublisher">
+            <summary>
+            Publish a notification or event through the mediator pipeline to be handled by multiple handlers.
+            </summary>
+        </member>
+        <member name="M:MediatR.IPublisher.Publish(System.Object,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously send a notification to multiple handlers
+            </summary>
+            <param name="notification">Notification object</param>
+            <param name="cancellationToken">Optional cancellation token</param>
+            <returns>A task that represents the publish operation.</returns>
+        </member>
+        <member name="M:MediatR.IPublisher.Publish``1(``0,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously send a notification to multiple handlers
+            </summary>
+            <param name="notification">Notification object</param>
+            <param name="cancellationToken">Optional cancellation token</param>
+            <returns>A task that represents the publish operation.</returns>
+        </member>
+        <member name="T:MediatR.IRequestHandler`2">
+            <summary>
+            Defines a handler for a request
+            </summary>
+            <typeparam name="TRequest">The type of request being handled</typeparam>
+            <typeparam name="TResponse">The type of response from the handler</typeparam>
+        </member>
+        <member name="M:MediatR.IRequestHandler`2.Handle(`0,System.Threading.CancellationToken)">
+            <summary>
+            Handles a request
+            </summary>
+            <param name="request">The request</param>
+            <param name="cancellationToken">Cancellation token</param>
+            <returns>Response from the request</returns>
+        </member>
+        <member name="T:MediatR.IRequestHandler`1">
+            <summary>
+            Defines a handler for a request with a void response.
+            </summary>
+            <typeparam name="TRequest">The type of request being handled</typeparam>
+        </member>
+        <member name="M:MediatR.IRequestHandler`1.Handle(`0,System.Threading.CancellationToken)">
+            <summary>
+            Handles a request
+            </summary>
+            <param name="request">The request</param>
+            <param name="cancellationToken">Cancellation token</param>
+            <returns>Response from the request</returns>
+        </member>
+        <member name="T:MediatR.ISender">
+            <summary>
+            Send a request through the mediator pipeline to be handled by a single handler.
+            </summary>
+        </member>
+        <member name="M:MediatR.ISender.Send``1(MediatR.IRequest{``0},System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously send a request to a single handler
+            </summary>
+            <typeparam name="TResponse">Response type</typeparam>
+            <param name="request">Request object</param>
+            <param name="cancellationToken">Optional cancellation token</param>
+            <returns>A task that represents the send operation. The task result contains the handler response</returns>
+        </member>
+        <member name="M:MediatR.ISender.Send``1(``0,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously send a request to a single handler with no response
+            </summary>
+            <param name="request">Request object</param>
+            <param name="cancellationToken">Optional cancellation token</param>
+            <returns>A task that represents the send operation.</returns>
+        </member>
+        <member name="M:MediatR.ISender.Send(System.Object,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously send an object request to a single handler via dynamic dispatch
+            </summary>
+            <param name="request">Request object</param>
+            <param name="cancellationToken">Optional cancellation token</param>
+            <returns>A task that represents the send operation. The task result contains the type erased handler response</returns>
+        </member>
+        <member name="M:MediatR.ISender.CreateStream``1(MediatR.IStreamRequest{``0},System.Threading.CancellationToken)">
+            <summary>
+            Create a stream via a single stream handler
+            </summary>
+            <typeparam name="TResponse"></typeparam>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MediatR.ISender.CreateStream(System.Object,System.Threading.CancellationToken)">
+            <summary>
+            Create a stream via an object request to a stream handler
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:MediatR.StreamHandlerDelegate`1">
+            <summary>
+            Represents an async enumerable continuation for the next task to execute in the pipeline
+            </summary>
+            <typeparam name="TResponse">Response type</typeparam>
+            <returns>Async Enumerable returning a <typeparamref name="TResponse"/></returns>
+        </member>
+        <member name="T:MediatR.IStreamPipelineBehavior`2">
+            <summary>
+            Stream Pipeline behavior to surround the inner handler.
+            Implementations add additional behavior and await the next delegate.
+            </summary>
+            <typeparam name="TRequest">Request type</typeparam>
+            <typeparam name="TResponse">Response type</typeparam>
+        </member>
+        <member name="M:MediatR.IStreamPipelineBehavior`2.Handle(`0,MediatR.StreamHandlerDelegate{`1},System.Threading.CancellationToken)">
+            <summary>
+            Stream Pipeline handler. Perform any additional behavior and iterate the <paramref name="next"/> delegate as necessary
+            </summary>
+            <param name="request">Incoming request</param>
+            <param name="next">Awaitable delegate for the next action in the pipeline. Eventually this delegate represents the handler.</param>
+            <param name="cancellationToken">Cancellation token</param>
+            <returns>Awaitable task returning the <typeparamref name="TResponse"/></returns>
+        </member>
+        <member name="T:MediatR.IStreamRequestHandler`2">
+            <summary>
+            Defines a handler for a stream request using IAsyncEnumerable as return type.
+            </summary>
+            <typeparam name="TRequest">The type of request being handled</typeparam>
+            <typeparam name="TResponse">The type of response from the handler</typeparam>
+        </member>
+        <member name="M:MediatR.IStreamRequestHandler`2.Handle(`0,System.Threading.CancellationToken)">
+            <summary>
+            Handles a stream request with IAsyncEnumerable as return type.
+            </summary>
+            <param name="request">The request</param>
+            <param name="cancellationToken">Cancellation token</param>
+            <returns>Response from the request</returns>
+        </member>
+        <member name="T:MediatR.Mediator">
+            <summary>
+            Default mediator implementation relying on single- and multi instance delegates for resolving handlers.
+            </summary>
+        </member>
+        <member name="M:MediatR.Mediator.#ctor(System.IServiceProvider)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediatR.Mediator"/> class.
+            </summary>
+            <param name="serviceProvider">Service provider. Can be a scoped or root provider</param>
+        </member>
+        <member name="M:MediatR.Mediator.#ctor(System.IServiceProvider,MediatR.INotificationPublisher)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediatR.Mediator"/> class.
+            </summary>
+            <param name="serviceProvider">Service provider. Can be a scoped or root provider</param>
+            <param name="publisher">Notification publisher. Defaults to <see cref="T:MediatR.NotificationPublishers.ForeachAwaitPublisher"/>.</param>
+        </member>
+        <member name="M:MediatR.Mediator.PublishCore(System.Collections.Generic.IEnumerable{MediatR.NotificationHandlerExecutor},MediatR.INotification,System.Threading.CancellationToken)">
+            <summary>
+            Override in a derived class to control how the tasks are awaited. By default the implementation calls the <see cref="T:MediatR.INotificationPublisher"/>.
+            </summary>
+            <param name="handlerExecutors">Enumerable of tasks representing invoking each notification handler</param>
+            <param name="notification">The notification being published</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns>A task representing invoking all handlers</returns>
+        </member>
+        <member name="T:MediatR.NotificationPublishers.ForeachAwaitPublisher">
+            <summary>
+            Awaits each notification handler in a single foreach loop:
+            <code>
+            foreach (var handler in handlers) {
+                await handler(notification, cancellationToken);
+            }
+            </code>
+            </summary>
+        </member>
+        <member name="T:MediatR.NotificationPublishers.TaskWhenAllPublisher">
+            <summary>
+            Uses Task.WhenAll with the list of Handler tasks:
+            <code>
+            var tasks = handlers
+                           .Select(handler => handler.Handle(notification, cancellationToken))
+                           .ToList();
+            
+            return Task.WhenAll(tasks);
+            </code>
+            </summary>
+        </member>
+        <member name="T:MediatR.Pipeline.IRequestExceptionAction`2">
+            <summary>
+            Defines an exception action for a request
+            </summary>
+            <typeparam name="TRequest">Request type</typeparam>
+            <typeparam name="TException">Exception type</typeparam>
+        </member>
+        <member name="M:MediatR.Pipeline.IRequestExceptionAction`2.Execute(`0,`1,System.Threading.CancellationToken)">
+            <summary>
+            Called when the request handler throws an exception
+            </summary>
+            <param name="request">Request instance</param>
+            <param name="exception">The thrown exception</param>
+            <param name="cancellationToken">Cancellation token</param>
+            <returns>An awaitable task</returns>
+        </member>
+        <member name="T:MediatR.Pipeline.IRequestExceptionHandler`3">
+            <summary>
+            Defines an exception handler for a request and response
+            </summary>
+            <typeparam name="TRequest">Request type</typeparam>
+            <typeparam name="TResponse">Response type</typeparam>
+            <typeparam name="TException">Exception type</typeparam>
+        </member>
+        <member name="M:MediatR.Pipeline.IRequestExceptionHandler`3.Handle(`0,`2,MediatR.Pipeline.RequestExceptionHandlerState{`1},System.Threading.CancellationToken)">
+            <summary>
+            Called when the request handler throws an exception
+            </summary>
+            <param name="request">Request instance</param>
+            <param name="exception">The thrown exception</param>
+            <param name="state">The current state of handling the exception</param>
+            <param name="cancellationToken">Cancellation token</param>
+            <returns>An awaitable task</returns>
+        </member>
+        <member name="T:MediatR.Pipeline.IRequestPostProcessor`2">
+            <summary>
+            Defines a request post-processor for a request
+            </summary>
+            <typeparam name="TRequest">Request type</typeparam>
+            <typeparam name="TResponse">Response type</typeparam>
+        </member>
+        <member name="M:MediatR.Pipeline.IRequestPostProcessor`2.Process(`0,`1,System.Threading.CancellationToken)">
+            <summary>
+            Process method executes after the Handle method on your handler
+            </summary>
+            <param name="request">Request instance</param>
+            <param name="response">Response instance</param>
+            <param name="cancellationToken">Cancellation token</param>
+            <returns>An awaitable task</returns>
+        </member>
+        <member name="T:MediatR.Pipeline.IRequestPreProcessor`1">
+            <summary>
+            Defined a request pre-processor for a handler
+            </summary>
+            <typeparam name="TRequest">Request type</typeparam>
+        </member>
+        <member name="M:MediatR.Pipeline.IRequestPreProcessor`1.Process(`0,System.Threading.CancellationToken)">
+            <summary>
+            Process method executes before calling the Handle method on your handler
+            </summary>
+            <param name="request">Incoming request</param>
+            <param name="cancellationToken">Cancellation token</param>
+            <returns>An awaitable task</returns>
+        </member>
+        <member name="T:MediatR.Pipeline.RequestExceptionActionProcessorBehavior`2">
+            <summary>
+            Behavior for executing all <see cref="T:MediatR.Pipeline.IRequestExceptionAction`2"/> instances
+                after an exception is thrown by the following pipeline steps
+            </summary>
+            <typeparam name="TRequest">Request type</typeparam>
+            <typeparam name="TResponse">Response type</typeparam>
+        </member>
+        <member name="T:MediatR.Pipeline.RequestExceptionHandlerState`1">
+            <summary>
+            Represents the result of handling an exception thrown by a request handler
+            </summary>
+            <typeparam name="TResponse">Response type</typeparam>
+        </member>
+        <member name="P:MediatR.Pipeline.RequestExceptionHandlerState`1.Handled">
+            <summary>
+            Indicates whether the current exception has been handled and the response should be returned.
+            </summary>
+        </member>
+        <member name="P:MediatR.Pipeline.RequestExceptionHandlerState`1.Response">
+            <summary>
+            The response that is returned if <see cref="P:MediatR.Pipeline.RequestExceptionHandlerState`1.Handled"/> is <code>true</code>.
+            </summary>
+        </member>
+        <member name="M:MediatR.Pipeline.RequestExceptionHandlerState`1.SetHandled(`0)">
+            <summary>
+            Call to indicate whether the current exception should be considered handled and the specified response should be returned.
+            </summary>
+            <param name="response">Set the response that will be returned.</param>
+        </member>
+        <member name="T:MediatR.Pipeline.RequestExceptionProcessorBehavior`2">
+            <summary>
+            Behavior for executing all <see cref="T:MediatR.Pipeline.IRequestExceptionHandler`3"/> instances
+                after an exception is thrown by the following pipeline steps
+            </summary>
+            <typeparam name="TRequest">Request type</typeparam>
+            <typeparam name="TResponse">Response type</typeparam>
+        </member>
+        <member name="T:MediatR.Pipeline.RequestPostProcessorBehavior`2">
+            <summary>
+            Behavior for executing all <see cref="T:MediatR.Pipeline.IRequestPostProcessor`2"/> instances after handling the request
+            </summary>
+            <typeparam name="TRequest">Request type</typeparam>
+            <typeparam name="TResponse">Response type</typeparam>
+        </member>
+        <member name="T:MediatR.Pipeline.RequestPreProcessorBehavior`2">
+            <summary>
+            Behavior for executing all <see cref="T:MediatR.Pipeline.IRequestPreProcessor`1"/> instances before handling a request
+            </summary>
+            <typeparam name="TRequest"></typeparam>
+            <typeparam name="TResponse"></typeparam>
+        </member>
+        <member name="P:Microsoft.Extensions.DependencyInjection.MediatRServiceConfiguration.TypeEvaluator">
+            <summary>
+            Optional filter for types to register. Default value is a function returning true.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Extensions.DependencyInjection.MediatRServiceConfiguration.MediatorImplementationType">
+            <summary>
+            Mediator implementation type to register. Default is <see cref="T:MediatR.Mediator"/>
+            </summary>
+        </member>
+        <member name="P:Microsoft.Extensions.DependencyInjection.MediatRServiceConfiguration.NotificationPublisher">
+            <summary>
+            Strategy for publishing notifications. Defaults to <see cref="T:MediatR.NotificationPublishers.ForeachAwaitPublisher"/>
+            </summary>
+        </member>
+        <member name="P:Microsoft.Extensions.DependencyInjection.MediatRServiceConfiguration.NotificationPublisherType">
+            <summary>
+            Type of notification publisher strategy to register. If set, overrides <see cref="P:Microsoft.Extensions.DependencyInjection.MediatRServiceConfiguration.NotificationPublisher"/>
+            </summary>
+        </member>
+        <member name="P:Microsoft.Extensions.DependencyInjection.MediatRServiceConfiguration.Lifetime">
+            <summary>
+            Service lifetime to register services under. Default value is <see cref="F:Microsoft.Extensions.DependencyInjection.ServiceLifetime.Transient"/>
+            </summary>
+        </member>
+        <member name="P:Microsoft.Extensions.DependencyInjection.MediatRServiceConfiguration.RequestExceptionActionProcessorStrategy">
+            <summary>
+            Request exception action processor strategy. Default value is <see cref="F:Microsoft.Extensions.DependencyInjection.RequestExceptionActionProcessorStrategy.ApplyForUnhandledExceptions"/>
+            </summary>
+        </member>
+        <member name="P:Microsoft.Extensions.DependencyInjection.MediatRServiceConfiguration.BehaviorsToRegister">
+            <summary>
+            List of behaviors to register in specific order
+            </summary>
+        </member>
+        <member name="P:Microsoft.Extensions.DependencyInjection.MediatRServiceConfiguration.StreamBehaviorsToRegister">
+            <summary>
+            List of stream behaviors to register in specific order
+            </summary>
+        </member>
+        <member name="P:Microsoft.Extensions.DependencyInjection.MediatRServiceConfiguration.RequestPreProcessorsToRegister">
+            <summary>
+            List of request pre processors to register in specific order
+            </summary>
+        </member>
+        <member name="P:Microsoft.Extensions.DependencyInjection.MediatRServiceConfiguration.RequestPostProcessorsToRegister">
+            <summary>
+            List of request post processors to register in specific order
+            </summary>
+        </member>
+        <member name="P:Microsoft.Extensions.DependencyInjection.MediatRServiceConfiguration.AutoRegisterRequestProcessors">
+            <summary>
+            Automatically register processors during assembly scanning
+            </summary>
+        </member>
+        <member name="P:Microsoft.Extensions.DependencyInjection.MediatRServiceConfiguration.MaxGenericTypeParameters">
+            <summary>
+            Configure the maximum number of type parameters that a generic request handler can have. To Disable this constraint, set the value to 0.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Extensions.DependencyInjection.MediatRServiceConfiguration.MaxTypesClosing">
+            <summary>
+            Configure the maximum number of types that can close a generic request type parameter constraint.  To Disable this constraint, set the value to 0.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Extensions.DependencyInjection.MediatRServiceConfiguration.MaxGenericTypeRegistrations">
+            <summary>
+            Configure the Maximum Amount of Generic RequestHandler Types MediatR will try to register.  To Disable this constraint, set the value to 0.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Extensions.DependencyInjection.MediatRServiceConfiguration.RegistrationTimeout">
+            <summary>
+            Configure the Timeout in Milliseconds that the GenericHandler Registration Process will exit with error.  To Disable this constraint, set the value to 0.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Extensions.DependencyInjection.MediatRServiceConfiguration.RegisterGenericHandlers">
+            <summary>
+            Flag that controlls whether MediatR will attempt to register handlers that containg generic type parameters.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.MediatRServiceConfiguration.RegisterServicesFromAssemblyContaining``1">
+            <summary>
+            Register various handlers from assembly containing given type
+            </summary>
+            <typeparam name="T">Type from assembly to scan</typeparam>
+            <returns>This</returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.MediatRServiceConfiguration.RegisterServicesFromAssemblyContaining(System.Type)">
+            <summary>
+            Register various handlers from assembly containing given type
+            </summary>
+            <param name="type">Type from assembly to scan</param>
+            <returns>This</returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.MediatRServiceConfiguration.RegisterServicesFromAssembly(System.Reflection.Assembly)">
+            <summary>
+            Register various handlers from assembly
+            </summary>
+            <param name="assembly">Assembly to scan</param>
+            <returns>This</returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.MediatRServiceConfiguration.RegisterServicesFromAssemblies(System.Reflection.Assembly[])">
+            <summary>
+            Register various handlers from assemblies
+            </summary>
+            <param name="assemblies">Assemblies to scan</param>
+            <returns>This</returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.MediatRServiceConfiguration.AddBehavior``2(Microsoft.Extensions.DependencyInjection.ServiceLifetime)">
+            <summary>
+            Register a closed behavior type
+            </summary>
+            <typeparam name="TServiceType">Closed behavior interface type</typeparam>
+            <typeparam name="TImplementationType">Closed behavior implementation type</typeparam>
+            <param name="serviceLifetime">Optional service lifetime, defaults to <see cref="F:Microsoft.Extensions.DependencyInjection.ServiceLifetime.Transient"/>.</param>
+            <returns>This</returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.MediatRServiceConfiguration.AddBehavior``1(Microsoft.Extensions.DependencyInjection.ServiceLifetime)">
+            <summary>
+            Register a closed behavior type against all <see cref="T:MediatR.IPipelineBehavior`2"/> implementations
+            </summary>
+            <typeparam name="TImplementationType">Closed behavior implementation type</typeparam>
+            <param name="serviceLifetime">Optional service lifetime, defaults to <see cref="F:Microsoft.Extensions.DependencyInjection.ServiceLifetime.Transient"/>.</param>
+            <returns>This</returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.MediatRServiceConfiguration.AddBehavior(System.Type,Microsoft.Extensions.DependencyInjection.ServiceLifetime)">
+            <summary>
+            Register a closed behavior type against all <see cref="T:MediatR.IPipelineBehavior`2"/> implementations
+            </summary>
+            <param name="implementationType">Closed behavior implementation type</param>
+            <param name="serviceLifetime">Optional service lifetime, defaults to <see cref="F:Microsoft.Extensions.DependencyInjection.ServiceLifetime.Transient"/>.</param>
+            <returns>This</returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.MediatRServiceConfiguration.AddBehavior(System.Type,System.Type,Microsoft.Extensions.DependencyInjection.ServiceLifetime)">
+            <summary>
+            Register a closed behavior type
+            </summary>
+            <param name="serviceType">Closed behavior interface type</param>
+            <param name="implementationType">Closed behavior implementation type</param>
+            <param name="serviceLifetime">Optional service lifetime, defaults to <see cref="F:Microsoft.Extensions.DependencyInjection.ServiceLifetime.Transient"/>.</param>
+            <returns>This</returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.MediatRServiceConfiguration.AddOpenBehavior(System.Type,Microsoft.Extensions.DependencyInjection.ServiceLifetime)">
+            <summary>
+            Registers an open behavior type against the <see cref="T:MediatR.IPipelineBehavior`2"/> open generic interface type
+            </summary>
+            <param name="openBehaviorType">An open generic behavior type</param>
+            <param name="serviceLifetime">Optional service lifetime, defaults to <see cref="F:Microsoft.Extensions.DependencyInjection.ServiceLifetime.Transient"/>.</param>
+            <returns>This</returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.MediatRServiceConfiguration.AddStreamBehavior``2(Microsoft.Extensions.DependencyInjection.ServiceLifetime)">
+            <summary>
+            Register a closed stream behavior type
+            </summary>
+            <typeparam name="TServiceType">Closed stream behavior interface type</typeparam>
+            <typeparam name="TImplementationType">Closed stream behavior implementation type</typeparam>
+            <param name="serviceLifetime">Optional service lifetime, defaults to <see cref="F:Microsoft.Extensions.DependencyInjection.ServiceLifetime.Transient"/>.</param>
+            <returns>This</returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.MediatRServiceConfiguration.AddStreamBehavior(System.Type,System.Type,Microsoft.Extensions.DependencyInjection.ServiceLifetime)">
+            <summary>
+            Register a closed stream behavior type
+            </summary>
+            <param name="serviceType">Closed stream behavior interface type</param>
+            <param name="implementationType">Closed stream behavior implementation type</param>
+            <param name="serviceLifetime">Optional service lifetime, defaults to <see cref="F:Microsoft.Extensions.DependencyInjection.ServiceLifetime.Transient"/>.</param>
+            <returns>This</returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.MediatRServiceConfiguration.AddStreamBehavior``1(Microsoft.Extensions.DependencyInjection.ServiceLifetime)">
+            <summary>
+            Register a closed stream behavior type against all <see cref="T:MediatR.IStreamPipelineBehavior`2"/> implementations
+            </summary>
+            <typeparam name="TImplementationType">Closed stream behavior implementation type</typeparam>
+            <param name="serviceLifetime">Optional service lifetime, defaults to <see cref="F:Microsoft.Extensions.DependencyInjection.ServiceLifetime.Transient"/>.</param>
+            <returns>This</returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.MediatRServiceConfiguration.AddStreamBehavior(System.Type,Microsoft.Extensions.DependencyInjection.ServiceLifetime)">
+            <summary>
+            Register a closed stream behavior type against all <see cref="T:MediatR.IStreamPipelineBehavior`2"/> implementations
+            </summary>
+            <param name="implementationType">Closed stream behavior implementation type</param>
+            <param name="serviceLifetime">Optional service lifetime, defaults to <see cref="F:Microsoft.Extensions.DependencyInjection.ServiceLifetime.Transient"/>.</param>
+            <returns>This</returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.MediatRServiceConfiguration.AddOpenStreamBehavior(System.Type,Microsoft.Extensions.DependencyInjection.ServiceLifetime)">
+            <summary>
+            Registers an open stream behavior type against the <see cref="T:MediatR.IStreamPipelineBehavior`2"/> open generic interface type
+            </summary>
+            <param name="openBehaviorType">An open generic stream behavior type</param>
+            <param name="serviceLifetime">Optional service lifetime, defaults to <see cref="F:Microsoft.Extensions.DependencyInjection.ServiceLifetime.Transient"/>.</param>
+            <returns>This</returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.MediatRServiceConfiguration.AddRequestPreProcessor``2(Microsoft.Extensions.DependencyInjection.ServiceLifetime)">
+            <summary>
+            Register a closed request pre processor type
+            </summary>
+            <typeparam name="TServiceType">Closed request pre processor interface type</typeparam>
+            <typeparam name="TImplementationType">Closed request pre processor implementation type</typeparam>
+            <param name="serviceLifetime">Optional service lifetime, defaults to <see cref="F:Microsoft.Extensions.DependencyInjection.ServiceLifetime.Transient"/>.</param>
+            <returns>This</returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.MediatRServiceConfiguration.AddRequestPreProcessor(System.Type,System.Type,Microsoft.Extensions.DependencyInjection.ServiceLifetime)">
+            <summary>
+            Register a closed request pre processor type
+            </summary>
+            <param name="serviceType">Closed request pre processor interface type</param>
+            <param name="implementationType">Closed request pre processor implementation type</param>
+            <param name="serviceLifetime">Optional service lifetime, defaults to <see cref="F:Microsoft.Extensions.DependencyInjection.ServiceLifetime.Transient"/>.</param>
+            <returns>This</returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.MediatRServiceConfiguration.AddRequestPreProcessor``1(Microsoft.Extensions.DependencyInjection.ServiceLifetime)">
+            <summary>
+            Register a closed request pre processor type against all <see cref="T:MediatR.Pipeline.IRequestPreProcessor`1"/> implementations
+            </summary>
+            <typeparam name="TImplementationType">Closed request pre processor implementation type</typeparam>
+            <param name="serviceLifetime">Optional service lifetime, defaults to <see cref="F:Microsoft.Extensions.DependencyInjection.ServiceLifetime.Transient"/>.</param>
+            <returns>This</returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.MediatRServiceConfiguration.AddRequestPreProcessor(System.Type,Microsoft.Extensions.DependencyInjection.ServiceLifetime)">
+            <summary>
+            Register a closed request pre processor type against all <see cref="T:MediatR.Pipeline.IRequestPreProcessor`1"/> implementations
+            </summary>
+            <param name="implementationType">Closed request pre processor implementation type</param>
+            <param name="serviceLifetime">Optional service lifetime, defaults to <see cref="F:Microsoft.Extensions.DependencyInjection.ServiceLifetime.Transient"/>.</param>
+            <returns>This</returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.MediatRServiceConfiguration.AddOpenRequestPreProcessor(System.Type,Microsoft.Extensions.DependencyInjection.ServiceLifetime)">
+            <summary>
+            Registers an open request pre processor type against the <see cref="T:MediatR.Pipeline.IRequestPreProcessor`1"/> open generic interface type
+            </summary>
+            <param name="openBehaviorType">An open generic request pre processor type</param>
+            <param name="serviceLifetime">Optional service lifetime, defaults to <see cref="F:Microsoft.Extensions.DependencyInjection.ServiceLifetime.Transient"/>.</param>
+            <returns>This</returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.MediatRServiceConfiguration.AddRequestPostProcessor``2(Microsoft.Extensions.DependencyInjection.ServiceLifetime)">
+            <summary>
+            Register a closed request post processor type
+            </summary>
+            <typeparam name="TServiceType">Closed request post processor interface type</typeparam>
+            <typeparam name="TImplementationType">Closed request post processor implementation type</typeparam>
+            <param name="serviceLifetime">Optional service lifetime, defaults to <see cref="F:Microsoft.Extensions.DependencyInjection.ServiceLifetime.Transient"/>.</param>
+            <returns>This</returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.MediatRServiceConfiguration.AddRequestPostProcessor(System.Type,System.Type,Microsoft.Extensions.DependencyInjection.ServiceLifetime)">
+            <summary>
+            Register a closed request post processor type
+            </summary>
+            <param name="serviceType">Closed request post processor interface type</param>
+            <param name="implementationType">Closed request post processor implementation type</param>
+            <param name="serviceLifetime">Optional service lifetime, defaults to <see cref="F:Microsoft.Extensions.DependencyInjection.ServiceLifetime.Transient"/>.</param>
+            <returns>This</returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.MediatRServiceConfiguration.AddRequestPostProcessor``1(Microsoft.Extensions.DependencyInjection.ServiceLifetime)">
+            <summary>
+            Register a closed request post processor type against all <see cref="T:MediatR.Pipeline.IRequestPostProcessor`2"/> implementations
+            </summary>
+            <typeparam name="TImplementationType">Closed request post processor implementation type</typeparam>
+            <param name="serviceLifetime">Optional service lifetime, defaults to <see cref="F:Microsoft.Extensions.DependencyInjection.ServiceLifetime.Transient"/>.</param>
+            <returns>This</returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.MediatRServiceConfiguration.AddRequestPostProcessor(System.Type,Microsoft.Extensions.DependencyInjection.ServiceLifetime)">
+            <summary>
+            Register a closed request post processor type against all <see cref="T:MediatR.Pipeline.IRequestPostProcessor`2"/> implementations
+            </summary>
+            <param name="implementationType">Closed request post processor implementation type</param>
+            <param name="serviceLifetime">Optional service lifetime, defaults to <see cref="F:Microsoft.Extensions.DependencyInjection.ServiceLifetime.Transient"/>.</param>
+            <returns>This</returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.MediatRServiceConfiguration.AddOpenRequestPostProcessor(System.Type,Microsoft.Extensions.DependencyInjection.ServiceLifetime)">
+            <summary>
+            Registers an open request post processor type against the <see cref="T:MediatR.Pipeline.IRequestPostProcessor`2"/> open generic interface type
+            </summary>
+            <param name="openBehaviorType">An open generic request post processor type</param>
+            <param name="serviceLifetime">Optional service lifetime, defaults to <see cref="F:Microsoft.Extensions.DependencyInjection.ServiceLifetime.Transient"/>.</param>
+            <returns>This</returns>
+        </member>
+        <member name="T:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions">
+            <summary>
+            Extensions to scan for MediatR handlers and registers them.
+            - Scans for any handler interface implementations and registers them as <see cref="F:Microsoft.Extensions.DependencyInjection.ServiceLifetime.Transient"/>
+            - Scans for any <see cref="T:MediatR.Pipeline.IRequestPreProcessor`1"/> and <see cref="T:MediatR.Pipeline.IRequestPostProcessor`2"/> implementations and registers them as transient instances
+            Registers <see cref="T:MediatR.IMediator"/> as a transient instance
+            After calling AddMediatR you can use the container to resolve an <see cref="T:MediatR.IMediator"/> instance.
+            This does not scan for any <see cref="T:MediatR.IPipelineBehavior`2"/> instances including <see cref="T:MediatR.Pipeline.RequestPreProcessorBehavior`2"/> and <see cref="T:MediatR.Pipeline.RequestPreProcessorBehavior`2"/>.
+            To register behaviors, use the <see cref="M:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddTransient(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Type,System.Type)"/> with the open generic or closed generic types.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddMediatR(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{Microsoft.Extensions.DependencyInjection.MediatRServiceConfiguration})">
+            <summary>
+            Registers handlers and mediator types from the specified assemblies
+            </summary>
+            <param name="services">Service collection</param>
+            <param name="configuration">The action used to configure the options</param>
+            <returns>Service collection</returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddMediatR(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.DependencyInjection.MediatRServiceConfiguration)">
+            <summary>
+            Registers handlers and mediator types from the specified assemblies
+            </summary>
+            <param name="services">Service collection</param>
+            <param name="configuration">Configuration options</param>
+            <returns>Service collection</returns>
+        </member>
+    </members>
+</doc>

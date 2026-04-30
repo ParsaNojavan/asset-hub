@@ -51,7 +51,7 @@ export default function DeleteAccount({ open, onClose }: ModalProps) {
       <div className="flex flex-col gap-6">
 
         <div className="flex flex-col gap-1">
-          <h4 className="text-white text-base font-medium">
+          <h4 className="text-foreground text-base font-medium">
             Are you sure you want to delete your account?
           </h4>
           <span className="text-zinc-500 text-sm">

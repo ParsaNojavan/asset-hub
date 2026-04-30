@@ -114,7 +114,7 @@ export default function AssetGrid({ assets }: { assets: Asset[] }) {
       {/* DELETE MODAL */}
       <Modal open={deleteOpen} onClose={() => setDeleteOpen(false)} title="Delete Asset">
         <div className="flex flex-col gap-6">
-          <h4 className="text-white text-base font-medium">
+          <h4 className="text-foreground text-base font-medium">
             Delete {selectedAsset?.fileName}?
           </h4>
           <span className="text-zinc-500 text-sm">
@@ -139,7 +139,7 @@ export default function AssetGrid({ assets }: { assets: Asset[] }) {
 
             <button
               onClick={() => setDeleteOpen(false)}
-              className="px-4 py-2 rounded cursor-pointer border border-zinc-700 text-zinc-300 hover:bg-zinc-800 text-sm"
+              className="px-4 py-2 rounded cursor-pointer border border-zinc-700 text-[text-color] hover:bg-zinc-800 text-sm"
             >
               Cancel
             </button>
@@ -150,7 +150,7 @@ export default function AssetGrid({ assets }: { assets: Asset[] }) {
       {/* SHARE MODAL */}
       <Modal open={shareOpen} onClose={() => setShareOpen(false)} title="Share Asset">
         <div className="flex flex-col gap-6">
-          <h4 className="text-white text-base font-medium">
+          <h4 className="text-forground text-base font-medium">
             Start streaming {selectedAsset?.fileName}?
           </h4>
           <span className="text-zinc-500 text-sm">
@@ -186,7 +186,7 @@ export default function AssetGrid({ assets }: { assets: Asset[] }) {
 
             <button
               onClick={() => setShareOpen(false)}
-              className="px-4 py-2 rounded cursor-pointer border border-zinc-700 text-zinc-300 hover:bg-zinc-800 text-sm"
+              className="px-4 py-2 rounded cursor-pointer border border-zinc-700 text-[text-color] hover:bg-zinc-800 text-sm"
             >
               Cancel
             </button>

@@ -36,10 +36,10 @@ namespace Storage.Application.CQRS.Handlers.FileHandlers
 
             string previosDirectory = file.StoragePath;
 
-            string parentDirectory = Path.GetDirectoryName(file.StoragePath);
+            string parentDirectory = Path.GetDirectoryName(file.StoragePath).Replace("\\","/");
 
             file.FileName = $"{request.Name}.{extension}";
-            file.StoragePath = parentDirectory + "/" + request.Name;
+            file.StoragePath = parentDirectory + "/" + $"{request.Name}.{extension}";
 
             await _storageService.MoveFileAsync(previosDirectory, file.StoragePath, cancellationToken);
             await _assetRepository.UpdateAsync(file);

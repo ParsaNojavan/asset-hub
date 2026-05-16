@@ -123,6 +123,30 @@ namespace Storage.API.Controllers
         }
         #endregion
 
+        #region Preview File
+        [HttpGet("preview")]
+        public async Task<IActionResult> Preview(
+            [FromQuery(Name = "FileId")] Guid fileId,
+            CancellationToken cancellationToken)
+        {
+            var userId = User.GetUserId();
+
+            var file = await _mediator.Send(
+                new DownloadAssetQuery(fileId, userId),
+                cancellationToken
+            );
+
+            Response.Headers["Content-Disposition"] = $"inline; filename=\"{file.FileName}\"";
+
+            return File(
+                file.Stream,
+                file.ContentType ?? "application/octet-stream",
+                enableRangeProcessing: true
+            );
+        }
+        #endregion
+
+
         #region Delete File
         [HttpDelete("delete/{fileId:guid}")]
         public async Task<IActionResult> Delete(

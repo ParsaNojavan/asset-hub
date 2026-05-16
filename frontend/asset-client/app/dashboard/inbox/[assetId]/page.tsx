@@ -1,9 +1,10 @@
 import Image from "next/image";
-import { ArrowLeft, Download } from "lucide-react";
+import { ArrowLeft, Download, Eye } from "lucide-react";
 import FileHeader from "@/app/components/file-header";
 import FileMetaData from "@/app/components/metadata";
 import { cookies } from "next/headers";
 import apiProxy from "@/lib/apiProxy";
+import { canPreview } from "@/utils/previewableTypes";
 
 export default async function AssetDetailsPage({params} : {params : Promise<{assetId : string}>}) {
 
@@ -31,13 +32,25 @@ export default async function AssetDetailsPage({params} : {params : Promise<{ass
 
         <div className="border-t border-zinc-800 my-10"></div>
 
-        {/* DOWNLOAD */}
-        <a 
-        href={`/api/asset/download/${assetId}`}
-        className="inline-flex px-6 py-3 bg-emerald-600 hover:bg-emerald-700 cursor-pointer gap-2 items-center rounded-lg text-white transition">
-          <Download size={20} />
-          Download File
-        </a>
+         <div className="flex flex-col sm:flex-row gap-2 justify-center sm:justify-start items-center">
+          {/* DOWNLOAD */}
+          <a
+            href={`/api/asset/download/${assetId}`}
+            className="inline-flex justify-center w-48 px-2 py-3 bg-emerald-600 hover:bg-emerald-700 cursor-pointer gap-2 items-center rounded-lg text-white transition">
+            <Download size={20} />
+            Download File
+          </a>
+
+          {canPreview(data.asset.contentType) && (
+
+            <a
+              href={`/api/asset/preview/${assetId}`} target="_blank"
+              className="inline-flex justify-center w-48 px-2 py-3 bg-amber-500 hover:bg-amber-600 cursor-pointer gap-2 items-center rounded-lg text-white transition">
+              <Eye size={20} />
+              Preview File
+            </a>
+          )}
+        </div>
 
         <div className="border-t border-zinc-800 my-10"></div>
 

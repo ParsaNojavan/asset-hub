@@ -57,9 +57,7 @@ export default async function FileHeader({file} : {file : File}) {
               <img
                 src={`https://localhost:7024/${file.user.imgUrl}`}
                 alt={file.user.username}
-                width={36}
-                height={36}
-                className="rounded-full"
+                className="rounded-full w-8 h-8 object-cover"
               />
               <span className="text-[small-text-color]">{file.user.username}</span>
             </div>

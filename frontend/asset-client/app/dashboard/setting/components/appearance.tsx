@@ -57,7 +57,7 @@ export default function AppearanceSection() {
                 ${
                   theme === t.id
                     ? "text-emerald-500 border-emerald-500 bg-emerald-500/10 ring-1 ring-emerald-500/50"
-                    : "border-zinc-800 hover:border-zinc-700 bg-zinc-900/50"
+                    : "border-zinc-800 hover:border-zinc-700 bg-zinc-700/50"
                 }`}
               >
                 <div className="text-[icon-color] group-hover:text-emerald-500 transition">
